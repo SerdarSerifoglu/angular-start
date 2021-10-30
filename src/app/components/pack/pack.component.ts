@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
 import { Pack } from 'src/app/models/pack';
 import { PackResponseModel } from 'src/app/models/packResponseModel';
+import { PackService } from 'src/app/services/pack.service';
 
 @Component({
   selector: 'app-pack',
@@ -10,9 +10,8 @@ import { PackResponseModel } from 'src/app/models/packResponseModel';
 })
 export class PackComponent implements OnInit {
   packs: Pack[] = [];
-  apiUrl = 'https://hardworder.herokuapp.com/api/';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private packService: PackService) { }
 
   ngOnInit(): void {
     console.log("pack çalıştı");
@@ -20,10 +19,9 @@ export class PackComponent implements OnInit {
   }
 
   getPacks() {
-    this.httpClient
-    .get<PackResponseModel>(this.apiUrl + 'pack/getAllUsersPacks')
-    .subscribe(response => { 
+    this.packService.getPacks().subscribe(response => {
       this.packs = response.data;
     })
   }
+
 }
