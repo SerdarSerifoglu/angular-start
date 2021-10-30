@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PackResponseModel } from '../models/packResponseModel';
+import { ListResponseModel } from '../models/listResponseModel';
+import { Pack } from '../models/pack';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class PackService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getPacks(): Observable<PackResponseModel> {
-    return this.httpClient.get<PackResponseModel>(this.apiUrl + 'pack/getAllUsersPacks');
+  getPacks(): Observable<ListResponseModel<Pack>> {
+    return this.httpClient.get<ListResponseModel<Pack>>(this.apiUrl + 'pack/getAllUsersPacks');
   }
 }

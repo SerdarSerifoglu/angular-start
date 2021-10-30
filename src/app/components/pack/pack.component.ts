@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Pack } from 'src/app/models/pack';
-import { PackResponseModel } from 'src/app/models/packResponseModel';
 import { PackService } from 'src/app/services/pack.service';
 
 @Component({
